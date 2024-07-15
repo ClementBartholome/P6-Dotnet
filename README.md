@@ -7,7 +7,8 @@
 Ce dépôt réunit les fichiers suivants : 
 - Le fichier P6-Dotnet.sql qui contient les requêtes permettant de créer et alimenter la base de données. 
 - Le fichier P6_LINQ_final.linq qui contient les requêtes LINQ répondant aux attentes du projet.
-- Le fichier P6_Dotnet.bak qui est une sauvegarde intégrale de la base de données.  
+- Le fichier P6_Dotnet.bak qui est une sauvegarde intégrale de la base de données.
+- Le modèle entité-association qui présente la conception logique de la base de données. 
 
 ### Scénario du projet
 
