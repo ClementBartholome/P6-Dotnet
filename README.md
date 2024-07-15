@@ -16,4 +16,13 @@ En tant que développeur Back-End, l’entreprise NexaWorks vous a engagé pour 
 NexaWorks développe différents produits logiciels. Chaque produit dispose de plusieurs versions, et chacune d’elles est compatible avec un ou plusieurs systèmes d’exploitation, notamment : Windows, MacOS, Linux, Android, et iOS. 
 L’entreprise doit assurer le suivi des problèmes qui surviennent pour chaque version et chaque système d’exploitation. 
 
-Elle ne dispose actuellement d’aucune application pour ce faire. Votre mission est de concevoir et de créer une base de données relationnelle personnalisée capable de stocker et de suivre tous les problèmes qui surviennent avec nos produits au cours du cycle de vie de chaque version, ainsi que la résolution de chacun de ces problèmes. Pour commencer, vous concevrez la base de données.
+Elle ne dispose actuellement d’aucune application pour ce faire. Votre mission est de concevoir et de créer une base de données relationnelle personnalisée capable de stocker et de suivre tous les problèmes qui surviennent avec nos produits au cours du cycle de vie de chaque version, ainsi que la résolution de chacun de ces problèmes.
+
+### Tâches demandées
+
+- Concevoir un modèle entité-association
+- Créer 25 tickets de problèmes à titre d'exemple
+- Créer la base de données et l'alimenter grâce aux 25 tickets créés précédemment
+- Produire des requêtes optimisées grâce à LINQ à partir d'une liste de 20 requêtes demandées par l'entreprise
+- Compléter un fichier excel de documentation de la base de données
+- Créer un dump de la base de données
