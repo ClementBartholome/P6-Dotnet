@@ -30,4 +30,4 @@ Elle ne dispose actuellement d’aucune application pour ce faire. Votre mission
 
 ### Modèle entité-association 
 
-![Modèle entité-association](/P6.drawio.png)
+![Modèle entité-association](/P6_Modele_Entite_Association.svg)
