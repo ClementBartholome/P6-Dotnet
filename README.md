@@ -26,3 +26,7 @@ Elle ne dispose actuellement d’aucune application pour ce faire. Votre mission
 - Produire des requêtes optimisées grâce à LINQ à partir d'une liste de 20 requêtes demandées par l'entreprise
 - Compléter un fichier excel de documentation de la base de données
 - Créer un dump de la base de données
+
+### Modèle entité-association 
+
+![Modèle entité-association](/P6.drawio.png)
