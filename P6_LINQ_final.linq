@@ -42,7 +42,7 @@ var problemesProduitParPeriodeQuery = this.Problemes
 	.Where(p => p.Date_signalement >= dateDebut.GetValueOrDefault())
     .Where(p => p.Date_signalement <= dateFin.GetValueOrDefault(DateOnly.MaxValue))
 	.AsEnumerable()
-    .Where(p => motsCles == null ? true : motsCles.Any(motCle => p.Description.Contains(motCle)));
+    .Where(p => motsCles == null ? true : motsCles.All(motCle => p.Description.Contains(motCle)));
 
 // Requête pour obtenir tous les problèmes en cours
 // Paramètres : produit (optionnel), version (optionnel), dateDebut (optionnel), dateFin (optionnel), mots-clés (optionnels)
@@ -54,7 +54,7 @@ var problemesEnCoursQuery = this.Problemes
 	.Where(p => dateDebut == null || p.Date_signalement >= dateDebut.GetValueOrDefault())
     .Where(p => dateFin == null || p.Date_signalement <= dateFin.GetValueOrDefault(DateOnly.MaxValue))
 	.AsEnumerable()
-    .Where(p => motsCles == null ? true : motsCles.Any(motCle => p.Description.Contains(motCle)));
+    .Where(p => motsCles == null ? true : motsCles.All(motCle => p.Description.Contains(motCle)));
 
 // Requête pour obtenir tous les problèmes résolus
 // Paramètres : produit (optionnel), version (optionnel), dateDebut (optionnel), dateFin (optionnel), mots-clés (optionnels)
@@ -66,7 +66,7 @@ var problemesResolusQuery = this.Problemes
 	.Where(p => dateDebut == null || p.Resolutions.Any(r => r.Date_resolution >= dateDebut.GetValueOrDefault()))
     .Where(p => dateFin == null || p.Resolutions.Any(r => r.Date_resolution <= dateFin.GetValueOrDefault(DateOnly.MaxValue)))
 	.AsEnumerable()
-    .Where(p => motsCles == null ? true : motsCles.Any(motCle => p.Description.Contains(motCle)));
+    .Where(p => motsCles == null ? true : motsCles.All(motCle => p.Description.Contains(motCle)));
 	
 var result = problemesResolusQuery.ToList();
 result.Dump();
