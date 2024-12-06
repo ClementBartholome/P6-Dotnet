@@ -37,38 +37,42 @@ List<string> motsCles = string.IsNullOrEmpty(motsClesInput) ? null : motsClesInp
 // Paramètres : produit, dateDebut, dateFin, version (optionnel), mots-clés (optionnels)
 // 4, 5, 9, 10
 var problemesProduitParPeriodeQuery = this.Problemes
-	.Where(p => p.Produit.Nom == produit)
+	.Where(p => p.Version.Produit.Nom == produit)
 	.Where(p => string.IsNullOrEmpty(version) || p.Version.Numero_version == version)
 	.Where(p => p.Date_signalement >= dateDebut.GetValueOrDefault())
     .Where(p => p.Date_signalement <= dateFin.GetValueOrDefault(DateOnly.MaxValue))
 	.AsEnumerable()
     .Where(p => motsCles == null ? true : motsCles.All(motCle => p.Description.Contains(motCle)));
+	
+	// Obtenir tous les problèmes rencontrés au cours d’une période donnée pour un produit
+// contenant une liste de mots-clés (une seule version)
+
 
 // Requête pour obtenir tous les problèmes en cours
 // Paramètres : produit (optionnel), version (optionnel), dateDebut (optionnel), dateFin (optionnel), mots-clés (optionnels)
 // 1, 2, 3, 6, 7, 8
 var problemesEnCoursQuery = this.Problemes
-	.Where(p => p.Statut == "En cours")
-	.Where(p => string.IsNullOrEmpty(produit) || p.Produit.Nom == produit)
-	.Where(p => string.IsNullOrEmpty(version) || p.Version.Numero_version == version)
-	.Where(p => dateDebut == null || p.Date_signalement >= dateDebut.GetValueOrDefault())
+    .Where(p => !p.Resolutions.Any())
+    .Where(p => string.IsNullOrEmpty(produit) || p.Version.Produit.Nom == produit) // Accès via Version.Produit
+    .Where(p => string.IsNullOrEmpty(version) || p.Version.Numero_version == version)
+    .Where(p => dateDebut == null || p.Date_signalement >= dateDebut.GetValueOrDefault())
     .Where(p => dateFin == null || p.Date_signalement <= dateFin.GetValueOrDefault(DateOnly.MaxValue))
-	.AsEnumerable()
+    .AsEnumerable()
     .Where(p => motsCles == null ? true : motsCles.All(motCle => p.Description.Contains(motCle)));
+
 
 // Requête pour obtenir tous les problèmes résolus
 // Paramètres : produit (optionnel), version (optionnel), dateDebut (optionnel), dateFin (optionnel), mots-clés (optionnels)
 // 11, 12, 13, 14, 15, 16, 17, 18, 19, 20
 var problemesResolusQuery = this.Problemes
-	.Where(p => p.Statut == "Résolu")
-	.Where(p => string.IsNullOrEmpty(produit) || p.Produit.Nom == produit)
+	.Where(p => p.Resolutions.Any())
+	.Where(p => string.IsNullOrEmpty(produit) || p.Version.Produit.Nom == produit)
 	.Where(p => string.IsNullOrEmpty(version) || p.Version.Numero_version == version)
 	.Where(p => dateDebut == null || p.Resolutions.Any(r => r.Date_resolution >= dateDebut.GetValueOrDefault()))
     .Where(p => dateFin == null || p.Resolutions.Any(r => r.Date_resolution <= dateFin.GetValueOrDefault(DateOnly.MaxValue)))
 	.AsEnumerable()
     .Where(p => motsCles == null ? true : motsCles.All(motCle => p.Description.Contains(motCle)));
-	
-var result = problemesResolusQuery.ToList();
-result.Dump();
 
 	
+var result = problemesResolusQuery.ToList();
+result.Dump();	
