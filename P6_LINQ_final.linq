@@ -49,7 +49,7 @@ var problemesProduitParPeriodeQuery = this.Problemes
 // 1, 2, 3, 6, 7, 8
 var problemesEnCoursQuery = this.Problemes
     .Where(p => !p.Resolutions.Any())
-    .Where(p => string.IsNullOrEmpty(produit) || p.Produit_version.Produit.Nom == produit) // Accès via Version.Produit
+    .Where(p => string.IsNullOrEmpty(produit) || p.Produit_version.Produit.Nom == produit)
     .Where(p => string.IsNullOrEmpty(version) || p.Produit_version.Version.Numero_version == version)
     .Where(p => dateDebut == null || p.Date_signalement >= dateDebut.GetValueOrDefault())
     .Where(p => dateFin == null || p.Date_signalement <= dateFin.GetValueOrDefault(DateOnly.MaxValue))
